@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservation - Restaurante Mayansi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="header-content">
+      <h1>Restaurante Mayansi 🍴</h1>
+       <a href="index.html"><img src="images/logo.webp" alt="Logo" class="logo" /></a>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="contact.html">Contact</a>
+    <a href="cart.html">🛒 Cart</a>
+    
+  </nav>
+
+  <!-- RESERVATION SECTION -->
+  <section id="reservation" class="reservation-section">
+    <div class="form-container">
+      <h2>Make a Reservation</h2>
+      <form id="reservationForm">
+        <input type="text" id="name" placeholder="Full Name" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="number" id="guests" placeholder="Number of Guests" required />
+        <input type="datetime-local" id="date" required />
+        <button type="submit" class="submit">Reserve Table</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      © 2025 Restaurante Mayansi |
+      <a href="https://maps.app.goo.gl/Q5KERMaaBn25XHcJ9" target="_blank" rel="noopener noreferrer">
+        www.restaurante-mayansi.com
+      </a>
+      | All Rights Reserved
+    </p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Cart | Restaurante Mayansi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <div class="header-content">
+      <h1>🛒 Your Cart - Restaurante Mayansi</h1>
+      <a href="index.html"><img src="images/logo.webp" alt="Logo" class="logo" /></a>
+    </div>
+
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="reservation.html">reservation</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main class="cart-page">
+    <h2>Items in Your Cart</h2>
+
+    <div id="cartItems" class="cart-items">
+      <p>Your cart is empty.</p>
+    </div>
+
+    <div class="cart-summary">
+      <h3>Total: €<span id="cartTotal">0</span></h3>
+      <button id="checkoutBtn" class="submit">Proceed to Checkout</button>
+      <br />
+      <a href="menu.html" class="back-link">← Continue Shopping</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      © 2025 Restaurante Mayansi |
+      <a href="https://maps.app.goo.gl/Q5KERMaaBn25XHcJ9" target="_blank" rel="noopener noreferrer">
+        www.restaurante-mayansi.com
+      </a>
+      | All Rights Reserved
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

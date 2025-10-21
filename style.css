@@ -1,0 +1,449 @@
+/* ========== GLOBAL STYLES ========== */
+* {
+  box-sizing: border-box;
+}
+
+:root{
+  /* adjust these if you change header/nav sizes */
+  --header-height: 80px;  /* approximate header height */
+  --nav-height: 56px;     /* approximate nav height */
+  --accent: #e63946;
+  --accent-dark: #b81c28;
+  --accent-yellow: #ffcc00;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+  color: #333;
+  background-color: #fff;
+  /* keep a column layout so footer can stick to bottom when content is short */
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* make sure main expands when present (keeps footer bottom) */
+main {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+}
+
+/* ========== HEADER ========== */
+header {
+  background: var(--accent);
+  color: white;
+  padding: 20px 40px;
+  margin: 0;
+  /* ensure header height is consistent with the variable */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.header-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-content h1 {
+  flex: 1;
+  text-align: center;
+  font-size: 1.8rem;
+  margin: 0;
+  line-height: 1;
+}
+
+/* Logo anchored to the right but responsive */
+.logo {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid white;
+  object-fit: cover;
+  transition: transform 0.25s ease;
+}
+
+/* avoid hover transform pushing vertical alignment */
+.logo:hover {
+  transform: translateY(-50%) scale(1.05);
+}
+
+/* ========== NAVIGATION ========== */
+/* ========== NAVIGATION ========== */
+nav {
+  background-color: rgba(0, 0, 0, 0.85);
+  text-align: center;
+  padding: 12px 16px;
+  margin: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  position: relative; /* Needed for flag position */
+}
+
+nav a {
+  color: white;
+  margin: 0 12px;
+  font-weight: 700;
+  transition: color 0.2s ease;
+  display: inline-block;
+  padding: 6px 4px;
+}
+
+nav a:hover {
+  color: var(--accent-yellow);
+}
+
+.language-switcher {
+  display: inline-flex;
+  gap: 8px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.flag-btn {
+  background: none;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 2px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.flag-btn:hover {
+  transform: scale(1.1);
+}
+
+.flag-icon {
+  width: 32px;
+  height: auto;
+  display: block;
+}
+/* ========== HERO SECTION ========== */
+/* Use min-height that subtracts header + nav to avoid overflow/extra page scroll */
+.hero {
+  position: relative;
+  /* fallback if variables don't match exact heights - allows perfect centering */
+  min-height: calc(100vh - (var(--header-height) + var(--nav-height)));
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /* prefer explicit background properties for consistency across browsers */
+  background-image: url("images/rest.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* overlay sits above the image but below the text */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+/* Hero text must be above overlay */
+.hero-text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  max-width: 1000px;
+  padding: 20px;
+}
+
+/* scale text on smaller screens so it fits */
+.hero-text h2 {
+  font-size: clamp(1.6rem, 3.5vw, 3rem);
+  margin: 0 0 0.6rem 0;
+  line-height: 1.05;
+}
+
+.hero-text p {
+  font-size: clamp(1rem, 1.7vw, 1.2rem);
+  margin: 0 0 1.5rem 0;
+}
+
+/* CTA style */
+.btn {
+  background-color: var(--accent-yellow);
+  color: #000;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-weight: 700;
+  transition: background 0.2s ease, transform 0.12s ease;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: #e6b800;
+  transform: translateY(-2px);
+}
+
+/* Ensure the hero image won't push footer on small content pages */
+@media (max-width: 900px) {
+  :root { --header-height: 72px; --nav-height: 56px; }
+  .header-content h1 { font-size: 1.4rem; }
+  .logo { width: 60px; height: 60px; right: 16px; }
+}
+
+/* For very small screens adjust layout so header elements wrap and logo doesn't overlap */
+@media (max-width: 600px) {
+  header { padding: 16px 18px; }
+  .header-content { align-items: center; gap: 8px; }
+  .header-content h1 { font-size: 1.15rem; }
+  .logo { position: static; transform: none; width: 52px; height: 52px; margin-left: 10px; }
+  nav a { margin: 0 8px; font-size: 0.95rem; }
+  .hero { min-height: calc(100vh - (64px + 48px)); background-attachment: scroll; }
+}
+
+/* ========== RESERVATION FORM ========== */
+.reservation-section {
+  padding: 80px 20px;
+  background: #f9f9f9;
+  text-align: center;
+  margin: 0;
+}
+
+.form-container {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ... keep existing reservation styles ... */
+#reservationForm input,
+#reservationForm button {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.submit {
+  background: var(--accent);
+  color: white;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.submit:hover {
+  background: var(--accent-dark);
+}
+
+/* ========== CONTACT SECTION ========== */
+#contact {
+  position: relative;
+  background-image: url('https://images.unsplash.com/photo-1543353071-087092ec393a?auto=format&fit=crop&w=1400&q=80');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  padding: 80px 20px;
+  margin: 0;
+}
+
+/* contact overlay/card */
+.contact-overlay {
+  background: rgba(0, 0, 0, 0.6);
+  max-width: 960px;
+  margin: auto;
+  padding: 40px 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
+}
+
+/* contact cards */
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 35px;
+}
+
+.info-item {
+  flex: 1 1 240px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.18s ease, background 0.18s ease;
+  backdrop-filter: blur(2px);
+}
+
+/* ensure form inputs remain usable with dark background */
+#contact input,
+#contact textarea {
+  padding: 12px 15px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
+  color: #333;
+}
+
+/* ========== CART PAGE STYLES (unchanged) ========== */
+.cart-page { padding: 40px 20px; text-align: center; }
+.cart-items { max-width: 600px; margin: 0 auto 20px; }
+.cart-item {
+  background: #fff3f3; margin: 10px 0; padding: 15px; border-radius: 10px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.remove-btn { background-color: var(--accent); color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; }
+.remove-btn:hover { background-color: #b91c1c; }
+
+/* ========== TIMETABLE SECTION (centered card & alignment) ========== */
+.timetable {
+  background: #f9f9f9;
+  padding: 60px 16px;
+  text-align: center;
+  margin: 0;
+}
+
+.timetable-container {
+  max-width: 640px;
+  margin: 0 auto;
+  background: white;
+  padding: 32px;
+  border-radius: 14px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  display: block;
+}
+
+.timetable h2 {
+  color: var(--accent);
+  font-size: 1.6rem;
+  margin-bottom: 18px;
+}
+
+.timetable table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.timetable td {
+  padding: 12px 8px;
+  border-bottom: 1px solid #eee;
+  font-size: 1.05rem;
+  color: #333;
+  text-align: left;
+}
+
+.timetable tr:last-child td { border-bottom: none; }
+
+.timetable tr:hover { background-color: #fff7f7; }
+
+/* make the first column narrower (days) and times aligned right for visual balance */
+.timetable td:first-child {
+  width: 45%;
+  font-weight: 600;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background: var(--accent);
+  color: white;
+  text-align: center;
+  padding: 20px 40px;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* =================== Accessibility & small tweaks =================== */
+a { text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* small screen tweaks for timetable and spacing */
+@media (max-width: 520px) {
+  .timetable-container { padding: 22px; border-radius: 12px; }
+  .timetable td { font-size: 1rem; padding: 10px 6px; }
+  .hero-text p { margin-bottom: 1rem; }
+  .hero-text h2 { font-size: 1.6rem; }
+}
+
+
+
+
+
+/* Hero Section */
+.menu-hero {
+  background: url('images/paella.jpg') center/cover no-repeat;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.menu-hero .overlay {
+  background: rgba(0,0,0,0.5);
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.menu-hero h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.menu-hero p {
+  font-size: 1.2rem;
+}
+
+/* Menu Sections */
+.menu-section {
+  padding: 60px 20px;
+}
+
+.menu-section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #e63946;
+}
+
+.menu-items {
+  max-width: 800px;
+  margin: auto;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
